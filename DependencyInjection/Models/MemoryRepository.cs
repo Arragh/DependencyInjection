@@ -9,6 +9,7 @@ namespace DependencyInjection.Models
     {
         //private Dictionary<string, Product> products;
         private IModelStorage storage;
+        private string guid = Guid.NewGuid().ToString();
         public MemoryRepository(IModelStorage storage)
         {
             //products = new Dictionary<string, Product>();
@@ -34,5 +35,7 @@ namespace DependencyInjection.Models
 
         //public void DeleteProduct(Product product) => products.Remove(product.Name);
         public void DeleteProduct(Product product) => storage.RemoveItem(product.Name);
+
+        public override string ToString() => guid;
     }
 }
